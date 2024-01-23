@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+// MARK: TODO
+// 1. Expandable items
+// 2. If tapping partially visible items, expand and scroll into view
+
 struct ContentView: View {
     let items = [Color.red, Color.blue, Color.yellow, Color.orange, Color.indigo]
     var body: some View {
