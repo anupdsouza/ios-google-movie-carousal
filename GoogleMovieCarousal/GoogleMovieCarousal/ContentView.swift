@@ -10,6 +10,7 @@ import SwiftUI
 // MARK: TODO
 // 1. Expandable items
 // 2. If tapping partially visible items, expand and scroll into view
+// 3. Collapse other items, only 1 item expandable at a time
 
 struct ContentView: View {
     let items = [Color.red, Color.blue, Color.yellow, Color.orange, Color.indigo]
