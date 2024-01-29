@@ -21,34 +21,40 @@ struct CarousalItemView: View {
     @State var item: CarouselItem
     @Binding var selectedItem: CarouselItem?
     @Namespace private var namespace
-    @State private var imageScale: CGFloat = 1.0
+    private var expanded: Bool {
+        item.id == selectedItem?.id
+    }
     
     var body: some View {
         VStack(alignment: .leading) {
             ZStack {
-                Image(showExpanded() ? item.stillImage : item.posterImage)
+                Image(item.posterImage)
                     .resizable()
                     .scaledToFill()
-                    .frame(width: showExpanded() ? 250 : 150, height: 200)
-//                    .transition(.move(edge: .leading))
-//                    .animation(.easeOut, value: imageScale)
-                    .matchedGeometryEffect(id: "image", in: namespace, anchor: .leading)
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    .scaleEffect(expanded ?  1.5 : 1, anchor: .topLeading)
+                    .frame(width: expanded ? 250 : 150, height: 200)
+                    .matchedGeometryEffect(id: "image", in: namespace, anchor: .topLeading, isSource: true)
+                    .opacity(expanded ? 0 : 1)
+                    .animation(.easeOut(duration: 0.3), value: expanded)
+                
+                Image(item.stillImage)
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: expanded ? 250 : 150, height: 200)
+                    .matchedGeometryEffect(id: "image", in: namespace, anchor: .topLeading, isSource: false)
+                    .opacity(expanded ? 1 : 0)
+                    .animation(.easeInOut(duration: 0.2).delay(expanded ? 0.1 : 0), value: expanded)
                     .overlay(alignment: .leading) {
-                        if showExpanded() {
+                        if expanded {
                             itemDetailsView()
                         }
                     }
             }
+            .clipShape(RoundedRectangle(cornerRadius: 10))
+
             Text(item.title)
                 .frame(height: 50)
         }
-    }
-    
-    private func showExpanded() -> Bool {
-        let expanded = item.id == selectedItem?.id
-        imageScale = expanded ? 2.5 : 1.0
-        return expanded
     }
     
     @ViewBuilder func itemDetailsView() -> some View {
@@ -99,29 +105,33 @@ struct ContentView: View {
             }
             
             // MARK: Carousal
-            ScrollView(.horizontal) {
-                LazyHStack(spacing: 10) {
-                    ForEach(items, id: \.id) { item in
-                        CarousalItemView(item: item, selectedItem: $selectedItem)
-                            .frame(width: selectedItem?.id != item.id ? 150 : 250, height: 250)
-                            .clipShape(RoundedRectangle(cornerRadius: 10))
-                            .contentShape(Rectangle())
-                            .onTapGesture {
-                                withAnimation {
-                                    if selectedItem?.id == item.id {
-                                        selectedItem = nil
-                                    } else {
-                                        selectedItem = item
+            ScrollViewReader { proxy in
+                ScrollView(.horizontal) {
+                    LazyHStack(spacing: 20) {
+                        ForEach(items, id: \.id) { item in
+                            CarousalItemView(item: item, selectedItem: $selectedItem)
+                                .frame(width: selectedItem?.id != item.id ? 150 : 250, height: 250)
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                                .contentShape(Rectangle())
+                                .onTapGesture {
+                                    DispatchQueue.main.async {
+                                        withAnimation {
+                                            if selectedItem?.id == item.id {
+                                                selectedItem = nil
+                                            } else {
+                                                selectedItem = item
+                                                proxy.scrollTo(selectedItem?.id, anchor: .trailing)
+                                            }
+                                        }
                                     }
                                 }
-                            }
+                        }
                     }
                 }
+                .frame(height: 250)
+                .scrollIndicators(.hidden)
+                .clipped()
             }
-            .frame(height: 250)
-            .scrollIndicators(.hidden)
-            .clipped()
-
             Spacer()
         }
         .padding()
