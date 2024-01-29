@@ -20,49 +20,24 @@ struct CarouselItem: Identifiable, Equatable {
 struct CarousalItemView: View {
     @State var item: CarouselItem
     @Binding var selectedItem: CarouselItem?
+    @Namespace private var namespace
+    @State private var imageScale: CGFloat = 1.0
     
     var body: some View {
-        if item.id == selectedItem?.id {
-            selectedItemView()
-        } else {
-            unselectedItemView()
-        }
-    }
-    
-    @ViewBuilder func selectedItemView() -> some View {
         VStack(alignment: .leading) {
             ZStack {
-                Image(item.stillImage)
+                Image(showExpanded() ? item.stillImage : item.posterImage)
                     .resizable()
                     .scaledToFill()
-                    .frame(width: 250, height: 200)
+                    .frame(width: showExpanded() ? 250 : 150, height: 200)
+//                    .transition(.move(edge: .leading))
+//                    .animation(.easeOut, value: imageScale)
+                    .matchedGeometryEffect(id: "image", in: namespace, anchor: .leading)
                     .clipShape(RoundedRectangle(cornerRadius: 10))
                     .overlay(alignment: .leading) {
-                        VStack(alignment: .leading, spacing: 15) {
-                            Spacer()
-                            Text(item.title)
-                                .font(.title2)
-                            HStack {
-                                Text("CBFC: " + item.certification)
-                                    .padding(.horizontal, 5)
-                                    .overlay {
-                                        Rectangle()
-                                            .stroke(.white, lineWidth: 1)
-                                    }
-                                Text(item.runtime)
-                                Text(item.year)
-                            }
-                            .shadow(color: .gray, radius: 5, y: 5)
-                            Button {
-                                
-                            } label: {
-                                Text("Trailer")
-                            }
-                            .buttonStyle(.borderedProminent)
-                            .tint(.gray)
-                            .padding(.bottom, 15)
+                        if showExpanded() {
+                            itemDetailsView()
                         }
-                        .padding(.horizontal, 10)
                     }
             }
             Text(item.title)
@@ -70,17 +45,38 @@ struct CarousalItemView: View {
         }
     }
     
-    @ViewBuilder func unselectedItemView() -> some View {
-        VStack(alignment: .leading) {
-            Image(item.posterImage)
-                .resizable()
-                .scaledToFill()
-                .frame(width: 150, height: 200)
-                .clipShape(RoundedRectangle(cornerRadius: 10))
+    private func showExpanded() -> Bool {
+        let expanded = item.id == selectedItem?.id
+        imageScale = expanded ? 2.5 : 1.0
+        return expanded
+    }
+    
+    @ViewBuilder func itemDetailsView() -> some View {
+        VStack(alignment: .leading, spacing: 15) {
+            Spacer()
             Text(item.title)
-                .frame(height: 50)
+                .font(.title2)
+            HStack {
+                Text("CBFC: " + item.certification)
+                    .padding(.horizontal, 5)
+                    .overlay {
+                        Rectangle()
+                            .stroke(.white, lineWidth: 1)
+                    }
+                Text(item.runtime)
+                Text(item.year)
+            }
+            .shadow(color: .gray, radius: 5, y: 5)
+            Button {
+
+            } label: {
+                Text("Trailer")
+            }
+            .buttonStyle(.borderedProminent)
+            .tint(.gray)
+            .padding(.bottom, 15)
         }
-        .foregroundStyle(.white)
+        .padding(.horizontal, 10)
     }
 }
 
