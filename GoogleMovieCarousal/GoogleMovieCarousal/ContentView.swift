@@ -104,7 +104,6 @@ struct ContentView: View {
                     .font(.title2.bold())
                 Spacer()
             }
-            
             // MARK: Carousal
             ScrollViewReader { proxy in
                 ScrollView(.horizontal) {
@@ -144,6 +143,8 @@ struct ContentView: View {
     }
 }
 
-#Preview {
-    ContentView()
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
 }
