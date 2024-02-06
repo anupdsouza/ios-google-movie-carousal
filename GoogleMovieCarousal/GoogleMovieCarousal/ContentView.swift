@@ -95,7 +95,6 @@ struct ContentView: View {
         .init(title: "The Dark Knight", year: "2008", runtime: "2h 32m", certification: "UA", posterImage: "poster6", stillImage: "still6")
     ]
     @State private var selectedItem: CarouselItem?
-    @State private var activeId: UUID?
     
     var body: some View {
         VStack {
@@ -109,7 +108,7 @@ struct ContentView: View {
             // MARK: Carousal
             ScrollViewReader { proxy in
                 ScrollView(.horizontal) {
-                    LazyHStack(spacing: 20) {
+                    HStack(spacing: 20) {
                         ForEach(items, id: \.id) { item in
                             CarousalItemView(item: item, selectedItem: $selectedItem)
                                 .frame(width: selectedItem?.id == item.id ? 250 : 150, height: 250)
@@ -118,14 +117,13 @@ struct ContentView: View {
                                 .id(item.id)
                                 .onTapGesture {
                                     DispatchQueue.main.async {
-                                        withAnimation(.easeInOut(duration: selectedItem == nil ? 0.4 : 0.0)) {
+                                        withAnimation(.easeInOut(duration: 0.4)) {
                                             selectedItem = selectedItem?.id == item.id ? nil : item
-                                            activeId = selectedItem?.id
                                         }
                                     }
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                                         withAnimation(.easeInOut(duration: 0.4)) {
-                                            proxy.scrollTo(activeId, anchor: .center)
+                                            proxy.scrollTo(selectedItem?.id, anchor: .center)
                                         }
                                     }
                                 }
@@ -134,8 +132,6 @@ struct ContentView: View {
                 }
                 .frame(height: 250)
                 .scrollIndicators(.hidden)
-                .scrollPosition(id: $activeId, anchor: .center)
-                .animation(.smooth(duration: 0.4), value: activeId)
             }
 
             Spacer()
