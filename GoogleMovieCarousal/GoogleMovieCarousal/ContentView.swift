@@ -118,17 +118,20 @@ struct ContentView: View {
                                 .id(item.id)
                                 .onTapGesture {
                                     DispatchQueue.main.async {
-                                        withAnimation(.easeInOut(duration: 0.4)) {
+                                        withAnimation(.easeInOut(duration: selectedItem == nil ? 0.4 : 0.0)) {
                                             selectedItem = selectedItem?.id == item.id ? nil : item
                                             activeId = selectedItem?.id
+                                        }
+                                    }
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                                        withAnimation(.easeInOut(duration: 0.4)) {
+                                            proxy.scrollTo(activeId, anchor: .center)
                                         }
                                     }
                                 }
                         }
                     }
-                    .scrollTargetLayout()
                 }
-                .scrollTargetBehavior(.viewAligned)
                 .frame(height: 250)
                 .scrollIndicators(.hidden)
                 .scrollPosition(id: $activeId, anchor: .center)
