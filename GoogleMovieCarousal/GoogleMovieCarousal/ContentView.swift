@@ -35,7 +35,6 @@ struct CarousalItemView: View {
                     .frame(width: expanded ? 250 : 150, height: 200)
                     .matchedGeometryEffect(id: "image", in: namespace, anchor: .topLeading, isSource: true)
                     .opacity(expanded ? 0 : 1)
-                    .animation(.easeOut(duration: 0.3), value: expanded)
                 
                 Image(item.stillImage)
                     .resizable()
@@ -43,7 +42,6 @@ struct CarousalItemView: View {
                     .frame(width: expanded ? 250 : 150, height: 200)
                     .matchedGeometryEffect(id: "image", in: namespace, anchor: .topLeading, isSource: false)
                     .opacity(expanded ? 1 : 0)
-                    .animation(.easeInOut(duration: 0.2).delay(expanded ? 0.1 : 0), value: expanded)
                     .overlay(alignment: .leading) {
                         if expanded {
                             itemDetailsView()
@@ -54,6 +52,7 @@ struct CarousalItemView: View {
 
             Text(item.title)
                 .frame(height: 50)
+                .lineLimit(1)
         }
     }
     
@@ -87,7 +86,7 @@ struct CarousalItemView: View {
 }
 
 struct ContentView: View {
-    var items: [CarouselItem] = [
+    private var items: [CarouselItem] = [
         .init(title: "Oppenheimer", year: "2023", runtime: "3h 1m", certification: "UA", posterImage: "poster1", stillImage: "still1"),
         .init(title: "Barbie", year: "2023", runtime: "1h 54m", certification: "PG", posterImage: "poster2", stillImage: "still2"),
         .init(title: "The Martian", year: "2015", runtime: "2h 24m", certification: "UA", posterImage: "poster3", stillImage: "still3"),
@@ -95,9 +94,12 @@ struct ContentView: View {
         .init(title: "The Godfather", year: "1972", runtime: "2h 55m", certification: "UA", posterImage: "poster5", stillImage: "still5"),
         .init(title: "The Dark Knight", year: "2008", runtime: "2h 32m", certification: "UA", posterImage: "poster6", stillImage: "still6")
     ]
-    @State var selectedItem: CarouselItem?
+    @State private var selectedItem: CarouselItem?
+    @State private var activeId: UUID?
+    
     var body: some View {
         VStack {
+            // MARK: Header
             HStack {
                 Text("Popular films")
                     .font(.title2.bold())
@@ -110,28 +112,29 @@ struct ContentView: View {
                     LazyHStack(spacing: 20) {
                         ForEach(items, id: \.id) { item in
                             CarousalItemView(item: item, selectedItem: $selectedItem)
-                                .frame(width: selectedItem?.id != item.id ? 150 : 250, height: 250)
+                                .frame(width: selectedItem?.id == item.id ? 250 : 150, height: 250)
                                 .clipShape(RoundedRectangle(cornerRadius: 10))
                                 .contentShape(Rectangle())
+                                .id(item.id)
                                 .onTapGesture {
                                     DispatchQueue.main.async {
-                                        withAnimation {
-                                            if selectedItem?.id == item.id {
-                                                selectedItem = nil
-                                            } else {
-                                                selectedItem = item
-                                                proxy.scrollTo(selectedItem?.id, anchor: .trailing)
-                                            }
+                                        withAnimation(.easeInOut(duration: 0.4)) {
+                                            selectedItem = selectedItem?.id == item.id ? nil : item
+                                            activeId = selectedItem?.id
                                         }
                                     }
                                 }
                         }
                     }
+                    .scrollTargetLayout()
                 }
+                .scrollTargetBehavior(.viewAligned)
                 .frame(height: 250)
                 .scrollIndicators(.hidden)
-                .clipped()
+                .scrollPosition(id: $activeId, anchor: .center)
+                .animation(.smooth(duration: 0.4), value: activeId)
             }
+
             Spacer()
         }
         .padding()
@@ -142,8 +145,6 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+#Preview {
+    ContentView()
 }
