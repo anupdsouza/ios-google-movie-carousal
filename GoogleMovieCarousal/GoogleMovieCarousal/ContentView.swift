@@ -48,6 +48,10 @@ struct CarousalItemView: View {
                         }
                     }
             }
+            .overlay {
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(.white, lineWidth: 0.5)
+            }
             .clipShape(RoundedRectangle(cornerRadius: 10))
 
             Text(item.title)
