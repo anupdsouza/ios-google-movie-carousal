@@ -26,7 +26,7 @@ struct CarousalItemView: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 0) {
             ZStack {
                 Image(item.posterImage)
                     .resizable()
@@ -53,33 +53,42 @@ struct CarousalItemView: View {
             Text(item.title)
                 .frame(height: 50)
                 .lineLimit(1)
+                .shadow(color: .black, radius: 2, x: 1, y: 1)
         }
     }
     
     @ViewBuilder func itemDetailsView() -> some View {
         VStack(alignment: .leading, spacing: 15) {
             Spacer()
-            Text(item.title)
-                .font(.title2)
-            HStack {
-                Text("CBFC: " + item.certification)
-                    .padding(.horizontal, 5)
-                    .overlay {
-                        Rectangle()
-                            .stroke(.white, lineWidth: 1)
-                    }
-                Text(item.runtime)
-                Text(item.year)
+            Group {
+                Text(item.title)
+                    .font(.title2)
+                HStack {
+                    Text("CBFC: " + item.certification)
+                        .padding(.horizontal, 5)
+                        .overlay {
+                            Rectangle()
+                                .stroke(.white, lineWidth: 1)
+                        }
+                    Text(item.runtime)
+                    Text(item.year)
+                }
             }
-            .shadow(color: .gray, radius: 5, y: 5)
+            .shadow(color: .black, radius: 2, x: 1, y: 1)
+            
             Button {
 
             } label: {
                 Text("Trailer")
             }
             .buttonStyle(.borderedProminent)
-            .tint(.gray)
+            .tint(.black)
+            .overlay {
+                RoundedRectangle(cornerRadius: 5)
+                    .stroke(.white)
+            }
             .padding(.bottom, 15)
+            
         }
         .padding(.horizontal, 10)
     }
@@ -88,7 +97,7 @@ struct CarousalItemView: View {
 struct ContentView: View {
     private var items: [CarouselItem] = [
         .init(title: "Oppenheimer", year: "2023", runtime: "3h 1m", certification: "UA", posterImage: "poster1", stillImage: "still1"),
-        .init(title: "Barbie", year: "2023", runtime: "1h 54m", certification: "PG", posterImage: "poster2", stillImage: "still2"),
+        .init(title: "The Matrix", year: "1999", runtime: "2h 16m", certification: "A", posterImage: "poster2", stillImage: "still2"),
         .init(title: "The Martian", year: "2015", runtime: "2h 24m", certification: "UA", posterImage: "poster3", stillImage: "still3"),
         .init(title: "The Shawshank Redemption", year: "1994", runtime: "2h 22m", certification: "U", posterImage: "poster4", stillImage: "still4"),
         .init(title: "The Godfather", year: "1972", runtime: "2h 55m", certification: "UA", posterImage: "poster5", stillImage: "still5"),
@@ -98,12 +107,15 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
+
             // MARK: Header
             HStack {
                 Text("Popular films")
                     .font(.title2.bold())
+                    .shadow(color: .black, radius: 2, x: 1, y: 1)
                 Spacer()
             }
+
             // MARK: Carousal
             ScrollViewReader { proxy in
                 ScrollView(.horizontal) {
@@ -137,7 +149,26 @@ struct ContentView: View {
         }
         .padding()
         .background {
-            Color(.darkGray).ignoresSafeArea()
+            
+            // MARK: Background
+            ZStack {
+                GeometryReader { proxy in
+
+                    Color.black
+                    
+                    if let image = selectedItem?.posterImage {
+                        Image(image)
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: proxy.size.width, height: proxy.size.height)
+                            .overlay {
+                                Color.clear
+                                    .background(.ultraThinMaterial)
+                            }
+                    }
+                }
+            }
+            .ignoresSafeArea()
         }
         .foregroundStyle(.white)
     }
