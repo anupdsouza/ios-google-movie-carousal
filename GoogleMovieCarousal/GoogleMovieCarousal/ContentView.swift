@@ -80,16 +80,17 @@ struct CarousalItemView: View {
             }
             .shadow(color: .black, radius: 2, x: 1, y: 1)
             
-            Button {
-
-            } label: {
-                Text("Trailer")
-            }
-            .buttonStyle(.borderedProminent)
-            .tint(.black)
-            .overlay {
-                RoundedRectangle(cornerRadius: 5)
-                    .stroke(.white)
+            HStack(spacing: 10) {
+                Group {
+                    Button("Trailer") {}
+                    Button("Watch now") {}
+                }
+                .buttonStyle(.borderedProminent)
+                .tint(.black)
+                .overlay {
+                    RoundedRectangle(cornerRadius: 5)
+                        .stroke(.white)
+                }
             }
             .padding(.bottom, 15)
             
