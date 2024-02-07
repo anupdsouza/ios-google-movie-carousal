@@ -14,7 +14,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		E4C0DA092B5FD0C8002B27B8 /* GoogleMovieCarousal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoogleMovieCarousal.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4C0DA092B5FD0C8002B27B8 /* Google Movies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Google Movies.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4C0DA0C2B5FD0C8002B27B8 /* GoogleMovieCarousalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMovieCarousalApp.swift; sourceTree = "<group>"; };
 		E4C0DA0E2B5FD0C8002B27B8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E4C0DA102B5FD0CD002B27B8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -43,7 +43,7 @@
 		E4C0DA0A2B5FD0C8002B27B8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E4C0DA092B5FD0C8002B27B8 /* GoogleMovieCarousal.app */,
+				E4C0DA092B5FD0C8002B27B8 /* Google Movies.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -84,7 +84,7 @@
 			);
 			name = GoogleMovieCarousal;
 			productName = GoogleMovieCarousal;
-			productReference = E4C0DA092B5FD0C8002B27B8 /* GoogleMovieCarousal.app */;
+			productReference = E4C0DA092B5FD0C8002B27B8 /* Google Movies.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -283,7 +283,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.anupdsouza.GoogleMovieCarousal;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Google Movies";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -312,7 +312,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.anupdsouza.GoogleMovieCarousal;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Google Movies";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
