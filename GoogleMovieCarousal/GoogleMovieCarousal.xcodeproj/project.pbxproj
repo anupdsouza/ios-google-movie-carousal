@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E42752F02C9A930D00651F46 /* MovieItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42752EF2C9A930D00651F46 /* MovieItemView.swift */; };
 		E4C0DA0D2B5FD0C8002B27B8 /* GoogleMovieCarousalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C0DA0C2B5FD0C8002B27B8 /* GoogleMovieCarousalApp.swift */; };
 		E4C0DA0F2B5FD0C8002B27B8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C0DA0E2B5FD0C8002B27B8 /* ContentView.swift */; };
 		E4C0DA112B5FD0CD002B27B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4C0DA102B5FD0CD002B27B8 /* Assets.xcassets */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E42752EF2C9A930D00651F46 /* MovieItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieItemView.swift; sourceTree = "<group>"; };
 		E4C0DA092B5FD0C8002B27B8 /* Google Movies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Google Movies.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4C0DA0C2B5FD0C8002B27B8 /* GoogleMovieCarousalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMovieCarousalApp.swift; sourceTree = "<group>"; };
 		E4C0DA0E2B5FD0C8002B27B8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -53,6 +55,7 @@
 			children = (
 				E4C0DA0C2B5FD0C8002B27B8 /* GoogleMovieCarousalApp.swift */,
 				E4C0DA0E2B5FD0C8002B27B8 /* ContentView.swift */,
+				E42752EF2C9A930D00651F46 /* MovieItemView.swift */,
 				E4C0DA102B5FD0CD002B27B8 /* Assets.xcassets */,
 				E4C0DA122B5FD0CD002B27B8 /* Preview Content */,
 			);
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E42752F02C9A930D00651F46 /* MovieItemView.swift in Sources */,
 				E4C0DA0F2B5FD0C8002B27B8 /* ContentView.swift in Sources */,
 				E4C0DA0D2B5FD0C8002B27B8 /* GoogleMovieCarousalApp.swift in Sources */,
 			);
