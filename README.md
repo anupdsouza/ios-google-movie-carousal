@@ -1,27 +1,22 @@
-# Recreating Google's carousal effect as seen on Web
-### Consider supporting me:
-[![GitHub](https://img.shields.io/badge/⭐️%20%20%20%20%20%20STAR%20%20%20%20%20THE%20%20%20%20REPO%20%20%20%20%20%20-red?style=for-the-badge&logo=github&logoColor=white&labelColor=000000)](https://github.com/anupdsouza/ios-google-movie-carousal)  
-[![YouTube](https://img.shields.io/badge/SUBSCRIBE%20TO%20MY%20CHANNEL-red?style=for-the-badge&logo=youtube&logoColor=white&labelColor=FF0000)](https://www.youtube.com/@swiftodyssey)  
-
-
----
-* Web (on-hover):
+# Google's Carousal Effect
+Recreating Google's carousal effect as seen on Desktop/Web(on-hover)
 
 https://github.com/anupdsouza/ios-google-movie-carousal/assets/103429618/34521478-21b7-4afe-bae4-cf95b40a1295
 
-* iOS (on tap gesture):
 
+Star the Repo if you found this useful: <picture><img align="center" alt="startherepo" src="https://github.com/anupdsouza/ios-miscellaneous/blob/bf5cb23d0ffbb21afa7b442540a7682df27c3b12/starrepo.gif" height="50" hspace="5"></picture><br/>
+Support Me: <a href="https://www.buymeacoffee.com/adsouza"><img align="center" alt="buymeacoffee" src="https://github.com/anupdsouza/ios-miscellaneous/blob/bf5cb23d0ffbb21afa7b442540a7682df27c3b12/bmc.png" height="30" hspace="5"></a> <a href="https://www.youtube.com/@swiftodyssey"><img align="center" alt="youtube" src="https://github.com/anupdsouza/ios-miscellaneous/blob/bf5cb23d0ffbb21afa7b442540a7682df27c3b12/subscribe.png" height="30" hspace="5"></a>
 
+## Video
 https://github.com/user-attachments/assets/e7c50dee-52da-4d8d-bb12-bf1152ad0494
 
-### If you liked this, you can also:
-[![X](https://img.shields.io/badge/FOLLOW%20%20%20%20%20%20ME%20%20%20%20%20%20%20ON%20%20%20%20%20%20X-red?style=for-the-badge&logo=X&logoColor=white&labelColor=1DA1F2)](https://x.com/swift_odyssey)  
-[![GitHub](https://img.shields.io/badge/FOLLOW%20%20%20%20ME%20%20ON%20%20%20GITHUB%20%20%20-red?style=for-the-badge&logo=github&logoColor=white&labelColor=000000)](https://github.com/anupdsouza)  
-[![Buy Me a Coffee](https://img.shields.io/badge/BUY%20%20%20%20%20%20ME%20%20%20%20%20%20A%20%20%20%20%20%20COFFEE%20-red?style=for-the-badge&logo=buymeacoffee&logoColor=black&labelColor=F8D248)](https://www.buymeacoffee.com/adsouza)  
-[![Patreon](https://img.shields.io/badge/BECOME%20%20%20%20%20%20%20%20A%20%20%20%20%20%20%20PATRON-red?style=for-the-badge&logo=patreon&logoColor=white&labelColor=black)](https://patreon.com/adsouza)  
 
+## Stay Connected 🤙🏼
+- <picture><img align="center" alt="star the repo" src="https://github.com/anupdsouza/ios-miscellaneous/blob/bf5cb23d0ffbb21afa7b442540a7682df27c3b12/star.png" height="20" hspace="5"></picture><a href="https://github.com/anupdsouza/ios-scratch-card-view">Star the Repo</a>
+- <picture><img align="center" alt="youtube" src="https://github.com/anupdsouza/ios-miscellaneous/blob/bf5cb23d0ffbb21afa7b442540a7682df27c3b12/ic-yt.png" height="20" hspace="5"></picture><a href="https://www.youtube.com/@swiftodyssey">Subscribe on YouTube</a>
+- <picture><img align="center" alt="buymeacoffee" src="https://github.com/anupdsouza/ios-miscellaneous/blob/bf5cb23d0ffbb21afa7b442540a7682df27c3b12/ic-bmc.png" height="20" hspace="5"></picture><a href="https://www.buymeacoffee.com/adsouza">Buy Me a Coffee</a>
+- <picture><img align="center" alt="patreon" src="https://github.com/anupdsouza/ios-miscellaneous/blob/bf5cb23d0ffbb21afa7b442540a7682df27c3b12/ic-patreon.png" height="20" hspace="5"></picture><a href="https://patreon.com/adsouza">Become a Patron</a>
+- <picture><img align="center" alt="x" src="https://github.com/anupdsouza/ios-miscellaneous/blob/bf5cb23d0ffbb21afa7b442540a7682df27c3b12/ic-x.png" height="20" hspace="5"></picture><a href="https://x.com/swift_odyssey">Follow me on X</a>
+- <picture><img align="center" alt="github" src="https://github.com/anupdsouza/ios-miscellaneous/blob/bf5cb23d0ffbb21afa7b442540a7682df27c3b12/ic-gh.png" height="20" hspace="5"></picture><a href="https://github.com/anupdsouza">Follow me on GitHub</a>
 
-
-
-
-
+Your support makes projects like this possible!
